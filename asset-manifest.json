@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/lawdemoportfolio/static/css/main.b1ab2de1.css",
+    "main.js": "/lawdemoportfolio/static/js/main.811bb4fc.js",
+    "index.html": "/lawdemoportfolio/index.html",
+    "main.b1ab2de1.css.map": "/lawdemoportfolio/static/css/main.b1ab2de1.css.map",
+    "main.811bb4fc.js.map": "/lawdemoportfolio/static/js/main.811bb4fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1ab2de1.css",
+    "static/js/main.811bb4fc.js"
+  ]
+}
