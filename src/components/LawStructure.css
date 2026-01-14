@@ -1,0 +1,319 @@
+.law-structure-container {
+  position: relative;
+  width: 300px;
+  height: 320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1000px;
+}
+
+/* Top Peak */
+.structure-top {
+  position: relative;
+  z-index: 10;
+  transform-style: preserve-3d;
+}
+
+.structure-peak {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-gold));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.6),
+    inset 0 -5px 15px rgba(0, 0, 0, 0.3);
+  border: 3px solid var(--accent-gold);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.structure-peak::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid var(--accent-gold);
+  filter: drop-shadow(0 -3px 10px rgba(255, 215, 0, 0.5));
+}
+
+.structure-peak::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 15px;
+  background: linear-gradient(180deg, var(--primary-color), transparent);
+}
+
+.peak-symbol {
+  font-size: 28px;
+  animation: peak-pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes peak-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+/* Structure Levels */
+.structure-levels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+.structure-level {
+  height: 45px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(139, 115, 85, 0.15));
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+}
+
+.structure-level::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 6px;
+}
+
+.structure-level:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(139, 115, 85, 0.25));
+  border-color: var(--accent-gold);
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.structure-level:hover::before {
+  opacity: 0.1;
+}
+
+.level-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  position: relative;
+}
+
+.level-icon {
+  font-size: 20px;
+  animation: icon-bounce 2s ease-in-out infinite;
+}
+
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.level-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.level-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 50%;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.2), transparent);
+  border-radius: 50%;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Base */
+.structure-base {
+  margin-top: 15px;
+  width: 90%;
+  height: 40px;
+  background: linear-gradient(180deg, var(--secondary-color), rgba(139, 115, 85, 0.7));
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+  position: relative;
+  z-index: 3;
+}
+
+.structure-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 5px 5px 0 0;
+}
+
+.structure-base::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 5%;
+  right: 5%;
+  height: 15px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.5), transparent);
+  border-radius: 50%;
+}
+
+.base-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0%, 100% {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 2px 15px rgba(212, 175, 55, 0.8);
+  }
+}
+
+/* Floating Documents */
+.floating-doc {
+  position: absolute;
+  font-size: 24px;
+  filter: drop-shadow(0 0 10px var(--accent-gold));
+  z-index: 2;
+}
+
+.doc-1 {
+  top: 80px;
+  left: -10px;
+}
+
+.doc-2 {
+  top: 100px;
+  right: -10px;
+}
+
+/* Connecting Lines */
+.structure-levels::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-color), transparent);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .law-structure-container {
+    width: 260px;
+    height: 300px;
+  }
+
+  .structure-peak {
+    width: 50px;
+    height: 50px;
+  }
+
+  .peak-symbol {
+    font-size: 24px;
+  }
+
+  .structure-level {
+    height: 40px;
+  }
+
+  .level-icon {
+    font-size: 18px;
+  }
+
+  .level-title {
+    font-size: 12px;
+  }
+
+  .structure-base {
+    height: 35px;
+  }
+
+  .base-text {
+    font-size: 11px;
+  }
+
+  .floating-doc {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .law-structure-container {
+    width: 220px;
+  }
+
+  .structure-level {
+    height: 35px;
+  }
+
+  .level-title {
+    font-size: 11px;
+  }
+}

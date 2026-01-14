@@ -1,0 +1,284 @@
+.courtroom-container {
+  position: relative;
+  width: 300px;
+  height: 280px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.courtroom-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Pillars */
+.pillar {
+  position: absolute;
+  bottom: 80px;
+  width: 15px;
+  height: 120px;
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 5px 25px rgba(212, 175, 55, 0.3);
+}
+
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  background: linear-gradient(135deg, var(--accent-gold), var(--primary-color));
+  border-radius: 3px;
+}
+
+.pillar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
+  background: linear-gradient(135deg, var(--accent-gold), var(--primary-color));
+  border-radius: 2px;
+}
+
+.pillar-left {
+  left: 30px;
+  animation: pillar-glow 3s ease-in-out infinite;
+}
+
+.pillar-right {
+  right: 30px;
+  animation: pillar-glow 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes pillar-glow {
+  0%, 100% {
+    box-shadow: 0 5px 25px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 5px 35px rgba(212, 175, 55, 0.6);
+  }
+}
+
+/* Building */
+.building-front {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background: linear-gradient(180deg, #1a1a2e, #0f0f1e);
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+}
+
+.building-top {
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangle-roof {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 50px solid var(--primary-color);
+  position: absolute;
+  top: -50px;
+  left: 0;
+  filter: drop-shadow(0 -5px 15px rgba(212, 175, 55, 0.3));
+}
+
+.triangle-roof::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -80px;
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 40px solid rgba(255, 215, 0, 0.2);
+}
+
+.roof-text {
+  position: absolute;
+  top: -35px;
+  font-size: 24px;
+  z-index: 10;
+  animation: roof-pulse 2s ease-in-out infinite;
+}
+
+@keyframes roof-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px var(--accent-gold));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--accent-gold));
+  }
+}
+
+/* Columns */
+.building-columns {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+  height: 80px;
+}
+
+.column {
+  width: 12px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 6px;
+  background: linear-gradient(135deg, var(--accent-gold), var(--primary-color));
+  border-radius: 3px;
+}
+
+.column::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 6px;
+  background: linear-gradient(135deg, var(--accent-gold), var(--primary-color));
+  border-radius: 3px;
+}
+
+/* Entrance */
+.entrance {
+  padding: 0 30px 15px;
+}
+
+.door {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(139, 115, 85, 0.8), rgba(109, 90, 67, 0.8));
+  border: 2px solid var(--primary-color);
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.door::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.door::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+
+/* Steps */
+.steps-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step {
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(180deg, var(--secondary-color), rgba(139, 115, 85, 0.5));
+  margin-bottom: 3px;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.step-1 {
+  width: 90%;
+}
+
+.step-2 {
+  width: 95%;
+}
+
+.step-3 {
+  width: 100%;
+}
+
+/* Floating Elements */
+.floating-scale {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  filter: drop-shadow(0 0 10px var(--accent-gold));
+}
+
+.floating-document {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  font-size: 24px;
+  filter: drop-shadow(0 0 10px var(--accent-gold));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .courtroom-container {
+    width: 250px;
+    height: 230px;
+  }
+
+  .building-front {
+    width: 170px;
+  }
+
+  .triangle-roof {
+    border-left: 85px solid transparent;
+    border-right: 85px solid transparent;
+    border-bottom: 45px solid var(--primary-color);
+  }
+
+  .floating-scale,
+  .floating-document {
+    font-size: 22px;
+  }
+}

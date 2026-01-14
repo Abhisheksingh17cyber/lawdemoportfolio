@@ -1,0 +1,249 @@
+.law-books-container {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.bookshelf {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  height: 140px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.book {
+  width: 50px;
+  position: relative;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.book-spine {
+  width: 100%;
+  height: 100%;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.book-spine::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.book-title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.book-line {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 1px;
+}
+
+.book-line.short {
+  width: 60%;
+  align-self: center;
+}
+
+.book-top {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 2px 2px 0 0;
+}
+
+.book-page {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, #f5f5dc, #e8e8d0);
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.book-page::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background: linear-gradient(180deg, 
+    transparent, 
+    rgba(0, 0, 0, 0.1) 50%, 
+    transparent
+  );
+}
+
+/* Shelf Base */
+.shelf-base {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 12px;
+  background: linear-gradient(180deg, var(--secondary-color), rgba(139, 115, 85, 0.7));
+  border-radius: 2px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.shelf-base::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 2px;
+}
+
+.shelf-base::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 10%;
+  right: 10%;
+  height: 8px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4), transparent);
+  border-radius: 50%;
+}
+
+/* Reading Symbol */
+.reading-symbol {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  filter: drop-shadow(0 0 10px var(--accent-gold));
+  z-index: 3;
+}
+
+/* Hover Effects */
+.book:hover {
+  filter: brightness(1.2);
+}
+
+.book:hover .book-spine {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Decorative Elements */
+.law-books-container::before {
+  content: '📚';
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 20px;
+  opacity: 0.5;
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+.law-books-container::after {
+  content: '🏛️';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 20px;
+  opacity: 0.5;
+  animation: float-icon 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes float-icon {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 0.7;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .law-books-container {
+    width: 240px;
+    height: 160px;
+  }
+
+  .bookshelf {
+    height: 120px;
+    gap: 6px;
+  }
+
+  .book {
+    width: 42px;
+  }
+
+  .book-title {
+    font-size: 9px;
+  }
+
+  .shelf-base {
+    width: 220px;
+  }
+
+  .reading-symbol {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .law-books-container {
+    width: 200px;
+  }
+
+  .book {
+    width: 36px;
+  }
+
+  .bookshelf {
+    gap: 4px;
+  }
+}

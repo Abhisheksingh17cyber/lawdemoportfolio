@@ -2,6 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaGavel, FaBookOpen, FaAward, FaBalanceScale } from 'react-icons/fa';
+import LegalGavel from './LegalGavel';
+import Courtroom from './Courtroom';
+import LawBooks from './LawBooks';
+import LawStructure from './LawStructure';
 import './About.css';
 
 const About = () => {
@@ -124,6 +128,49 @@ const About = () => {
               </motion.div>
             ))}
           </motion.div>
+        </motion.div>
+
+        {/* Legal Components Showcase */}
+        <motion.div
+          className="legal-components-showcase"
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <h3 className="showcase-title">Legal Excellence</h3>
+          <div className="components-grid">
+            <motion.div 
+              className="component-item"
+              whileHover={{ scale: 1.05 }}
+            >
+              <LegalGavel />
+              <p className="component-label">Justice</p>
+            </motion.div>
+            
+            <motion.div 
+              className="component-item"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Courtroom />
+              <p className="component-label">Courtroom</p>
+            </motion.div>
+            
+            <motion.div 
+              className="component-item"
+              whileHover={{ scale: 1.05 }}
+            >
+              <LawBooks />
+              <p className="component-label">Legal Library</p>
+            </motion.div>
+            
+            <motion.div 
+              className="component-item"
+              whileHover={{ scale: 1.05 }}
+            >
+              <LawStructure />
+              <p className="component-label">Legal System</p>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

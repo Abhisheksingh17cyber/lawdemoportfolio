@@ -236,4 +236,117 @@
   .stat-number {
     font-size: 28px;
   }
+
+  .components-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
+
+/* Legal Components Showcase */
+.legal-components-showcase {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.showcase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.showcase-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 2px;
+}
+
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.component-item {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(139, 115, 85, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.component-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-gold));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.component-item:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(139, 115, 85, 0.1));
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.25);
+  transform: translateY(-10px);
+}
+
+.component-item:hover::before {
+  opacity: 0.05;
+}
+
+.component-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .components-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .legal-components-showcase {
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+
+  .showcase-title {
+    font-size: 28px;
+  }
+
+  .components-grid {
+    gap: 30px;
+  }
+
+  .component-item {
+    padding: 30px 15px;
+  }
+}
+
